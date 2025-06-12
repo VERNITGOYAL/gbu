@@ -4,6 +4,18 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/gbu/',
   plugins: [react(), tailwindcss()],
-  base: '/gbu/'
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  server: {
+    historyApiFallback: true, // Handle SPA routing fallback
+  }
 })
