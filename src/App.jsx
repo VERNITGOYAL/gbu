@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HoverCards from "./components/Card";
 import ICTPage from "./pages/ICTPage";
+import AboutIct from "./components/AboutIct";
+import HeroBanner from "./components/Research";
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HoverCards />} />
-        <Route path="/schools/ict" element={<ICTPage />} />
+        <Route path="/schools/ict" element={<AboutIct />} />
         {/* Add more <Route> entries here for other schools if needed */}
       </Routes>
 
