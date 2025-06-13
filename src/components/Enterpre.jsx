@@ -7,28 +7,24 @@ const entrepreneurs = [
     title: 'Co founder at Frienducation',
     imageUrl:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUKfas9xlNLEpCZmq1Et-7qR1rQBE6XLo8g&s',
-    bgColor: 'bg-black text-white',
   },
   {
     name: 'Sumit Kumar',
     title: 'Founder at Apex Byte',
     imageUrl:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUKfas9xlNLEpCZmq1Et-7qR1rQBE6XLo8g&s',
-    bgColor: 'bg-black text-white',
   },
   {
     name: 'Gaurav Kumar Jha',
     title: 'Co founder at Driffle',
     imageUrl:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUKfas9xlNLEpCZmq1Et-7qR1rQBE6XLo8g&s',
-    bgColor: 'bg-black text-white',
   },
   {
     name: 'Chetan Bhardwaj',
     title: 'CEO at Driffle',
     imageUrl:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUKfas9xlNLEpCZmq1Et-7qR1rQBE6XLo8g&s',
-    bgColor: 'bg-black text-white',
   },
 ];
 
@@ -40,33 +36,44 @@ const OurEntrepreneurs = () => {
         {entrepreneurs.map((person, index) => (
           <div
             key={index}
-            className={`group relative rounded-xl overflow-hidden shadow-lg transform transition duration-500 ${person.bgColor}`}
+            className="group bg-white rounded-2xl shadow-lg overflow-hidden transition duration-500 hover:bg-[#692b74] flex flex-col"
           >
-            <div className="overflow-hidden">
+            {/* Image Section */}
+            <div className="relative w-full h-80 overflow-hidden">
               <img
                 src={person.imageUrl}
                 alt={person.name}
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
-
-            {/* Slide-up Info */}
-            <div className="absolute bottom-0 w-full p-4 transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 ease-out">
-              <div className="flex gap-3 text-white mb-2">
-                <FaInstagram className="cursor-pointer hover:text-pink-500 transition duration-300" />
-                <FaXTwitter className="cursor-pointer hover:text-blue-400 transition duration-300" />
-                <FaFacebookF className="cursor-pointer hover:text-blue-600 transition duration-300" />
+            {/* Diagonal Info Section */}
+            <div className="relative -mt-12 z-10">
+              <div className="clip-diagonal bg-white group-hover:bg-[#692b74] transition-all duration-500 px-4 py-6 text-center">
+                <div className="flex gap-4 justify-center mb-2 text-black group-hover:text-white">
+                  <FaInstagram className="cursor-pointer hover:text-pink-400 transition duration-300" />
+                  <FaXTwitter className="cursor-pointer hover:text-blue-400 transition duration-300" />
+                  <FaFacebookF className="cursor-pointer hover:text-blue-600 transition duration-300" />
+                </div>
+                <hr className="w-8 border-2 mb-2 mx-auto border-black group-hover:border-white" />
+                <p className="text-sm font-semibold text-black group-hover:text-white">
+                  {person.name}
+                </p>
+                <p className="text-sm text-black group-hover:text-white">
+                  {person.title}
+                </p>
               </div>
-              <hr className="w-8 border-2 border-white mb-1" />
-              <p className="text-sm font-semibold text-white">{person.name}</p>
-              <p className="text-sm text-white">{person.title}</p>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Custom styles for diagonal clipping */}
+      <style jsx>{`
+        .clip-diagonal {
+          clip-path: polygon(0 20%, 100% 0%, 100% 100%, 0% 100%);
+        }
+      `}</style>
     </div>
   );
 };
